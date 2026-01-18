@@ -1,0 +1,2 @@
+# Humidity Reader Android App
+This app uses the CameraX Jetpack library to capture the colour reading of a polyacrylamide glycol sensor containing super paramagnetic iron oxide nanoparticles (SPION). The sensor visibly changes colour based on the ambient relative humidity (RH) and this app is designed to quickly read the colour of the sensor.
