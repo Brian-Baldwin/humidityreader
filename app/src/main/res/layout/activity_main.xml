@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <View
+    <ImageView
         android:id="@+id/border_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:background="@drawable/white_border"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="96dp"
+        android:src="@drawable/guide_shape"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="3:2"
+        app:layout_constraintDimensionRatio="17:27"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/border_view" />
 
     <TextView
-        android:id="@+id/rgb_text"
+        android:id="@+id/status_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -56,22 +56,21 @@
         tools:layout_editor_absoluteX="200dp"
         tools:layout_editor_absoluteY="400dp" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/rgb_toggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="Real-time RGB"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/height_indicator_line"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@android:color/holo_red_light"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/border_view"
+        app:layout_constraintStart_toStartOf="@+id/border_view"
+        tools:layout_editor_absoluteY="300dp" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/preview_overlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="border_view,instruction_text,rgb_text,rgb_toggle,red_dot_indicator" />
+        app:constraint_referenced_ids="border_view,instruction_text,status_text,red_dot_indicator,height_indicator_line" />
 
     <ImageView
         android:id="@+id/iv_capture"
@@ -80,7 +79,7 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/humidity_result_text"
+        android:id="@+id/result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
@@ -94,22 +93,25 @@
         app:layout_constraintVertical_bias="0.8" />
 
     <ImageButton
-        android:id="@+id/ib_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
-        android:visibility="gone"
-        android:stateListAnimator="@animator/button_depression_animator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
         android:id="@+id/image_capture_button"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/capture_button_background"
+        android:stateListAnimator="@animator/button_depression_animator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_close"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/capture_button_background"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="@android:color/black"
+        android:visibility="gone"
         android:stateListAnimator="@animator/button_depression_animator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
