@@ -1,0 +1,37 @@
+{
+  "branches": [
+    "master"
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "sed -i 's/versionName = .*/versionName = \"${nextRelease.version}\"/' app/build.gradle.kts"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "app/build.gradle.kts",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "addReleases": "top"
+      }
+    ]
+  ]
+}
